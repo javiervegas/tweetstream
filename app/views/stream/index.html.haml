@@ -1,4 +1,9 @@
-%h1.ur= @url
-<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/#{@id}" frameborder="0">
+<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/#{@id}?autoplay=1" frameborder="0">
 </iframe>
-%h2.text= @text
+.tweet
+  .useravatar <img src="#{@status.user.profile_image_url}">
+  #span.username= @status.user.screen_name
+  #span.name= @status.user.name
+  .text= @status.text
+  .time= @status.created_at
+%h6.foot= @status.inspect
