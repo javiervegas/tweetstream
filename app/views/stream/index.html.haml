@@ -1,9 +1,9 @@
-<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/#{@id}?autoplay=1" frameborder="0">
-</iframe>
 .tweet
   .useravatar <img src="#{@status.user.profile_image_url}">
-  #span.username= @status.user.screen_name
+  #span.username <a href="http://twitter.com/#{@status.user.screen_name}">#{@status.user.screen_name}</a>
   #span.name= @status.user.name
-  .text= @status.text
+  %h1= @status.text
   .time= @status.created_at
+<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/#{@id}?autoplay=1" frameborder="0">
+</iframe>
 %h6.foot= @status.inspect
