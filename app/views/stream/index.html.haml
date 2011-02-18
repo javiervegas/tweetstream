@@ -4,6 +4,9 @@
   #span.name= @status.user.name
   %h1= @status.text
   .time= @status.created_at
-<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/#{@id}?autoplay=1" frameborder="0">
-</iframe>
+.video <iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/#{@id}?autoplay=1" frameborder="0"></iframe>
+.info= @video.title
+.duration= @video.duration
+.date= @video.date
+%h3.foot= @video.inspect
 %h6.foot= @status.inspect

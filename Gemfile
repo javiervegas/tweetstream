@@ -10,6 +10,7 @@ gem 'haml'
 gem 'tweetstream'
 gem 'andand'
 gem 'json'
+gem 'video_info'
 
 # Use unicorn as the web server
 # gem 'unicorn'

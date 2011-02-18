@@ -36,6 +36,7 @@ GEM
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
     haml (3.0.25)
+    hpricot (0.8.3)
     i18n (0.5.0)
     json (1.5.1)
     mail (2.2.15)
@@ -76,6 +77,8 @@ GEM
       eventmachine (>= 0.12.8)
       roauth (>= 0.0.2)
     tzinfo (0.3.24)
+    video_info (0.2.4)
+      hpricot (~> 0.8.3)
 
 PLATFORMS
   ruby
@@ -87,3 +90,4 @@ DEPENDENCIES
   rails (= 3.0.4.rc1)
   sqlite3
   tweetstream
+  video_info
