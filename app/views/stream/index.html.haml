@@ -17,7 +17,10 @@
     .youtube <iframe  type="text/html" width="640" height="385" src="http://www.youtube.com/embed/#{@id}?autoplay=1" frameborder="0"></iframe>
   .video
     .info= @video.title
-    %span.duration= @video.duration
-    %span.date= @video.date
-.footer
-  %h6= @video.inspect+@status.inspect
+    .description= @video.description
+    %span.duration= convert_seconds_to_time(@video.duration)
+    %span.date= time_ago_in_words(@video.date, true)
+    %span ago via #{@video.provider}
+%h6
+  .video= @video.inspect
+  .tweet= @status.inspect
