@@ -1,0 +1,7 @@
+*autoload on video finish
+*next button
+*left panel with comet-like scrolling tweets with video thumbnail, cickable to open in
+main panel
+*extend tweetstream to have get and set video url and id
+*extend video to get video.url for the frame src
+*number of streams streamed, videos videoed
