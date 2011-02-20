@@ -2,7 +2,9 @@ class StreamController < ApplicationController
   def index
     # This will pull a sample of all tweets based on
     # our Twitter account's Streaming API role.
-    TweetStream::Client.new('javiervegas','9yogurines9').track('vimeo','youtube') do |@status|
+    until !@id.nil?
+      redis = Redis.new
+      @status = TweetStream::Status.new(JSON.parse(redis.get("tweet")))
       # The status object is a special Hash with
       # method access to its keys.
       @videorurl = @status.entities.urls.first.andand["expanded_url"] || @status.entities.urls.first.andand["url"]
@@ -12,7 +14,6 @@ class StreamController < ApplicationController
       puts @status.entities.urls.first.andand["expanded_url"]
       puts @videorurl
       puts @id
-      break if !@id.nil?
     end
     @video = VideoInfo.new(@videorurl)
   end

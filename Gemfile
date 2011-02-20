@@ -11,6 +11,7 @@ gem 'tweetstream'
 gem 'andand'
 gem 'json'
 gem 'video_info'
+gem 'redis'
 
 # Use unicorn as the web server
 # gem 'unicorn'
