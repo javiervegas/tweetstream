@@ -1,0 +1,16 @@
+  username: javiervegas
+  password: 9yogurines9
+
+  # should be "filter" or "sample", probably.
+  # Set the track terms for "filter" from the flamingo console (see README)
+  stream:   filter
+
+  logging:
+    dest:   /tmp/flamingo.log
+    level:  DEBUG
+
+  redis:
+    host:   0.0.0.0:6379
+  web:
+    host:   0.0.0.0:4711
+
