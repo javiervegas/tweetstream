@@ -13,6 +13,7 @@ gem 'json'
 gem 'video_info'
 gem 'redis'
 gem 'resque'
+gem 'SystemTimer'
 
 # Use unicorn as the web server
 # gem 'unicorn'
