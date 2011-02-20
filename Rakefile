@@ -6,7 +6,7 @@ require 'rake'
 require 'rubygems'
 require 'resque/tasks'
 require 'redis'
-require "json"
+require 'json'
 
 Tweetstream::Application.load_tasks
 
