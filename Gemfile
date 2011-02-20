@@ -5,18 +5,12 @@ gem 'rails', '3.0.4.rc1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-gem 'haml'
-gem 'tweetstream'
-gem 'andand'
-gem 'json'
-gem 'video_info'
-gem 'redis'
-gem 'resque'
-gem 'SystemTimer'
 
 # Use unicorn as the web server
 # gem 'unicorn'
+group :development, :test do
+    gem 'thin'
+end
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -30,6 +24,15 @@ gem 'SystemTimer'
 # gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
+gem 'sqlite3'
+gem 'haml'
+gem 'tweetstream'
+gem 'andand'
+gem 'json'
+gem 'video_info'
+gem 'redis'
+gem 'resque'
+gem 'SystemTimer'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

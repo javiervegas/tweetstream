@@ -10,6 +10,6 @@ require 'json'
 
 Tweetstream::Application.load_tasks
 
-task :server do
-  exec 'rails', 'server'
+task :start do
+  exec 'rails', 's', 'thin'
 end
