@@ -5,3 +5,5 @@ main panel
 *extend tweetstream to have get and set video url and id
 *extend video to get video.url for the frame src
 *number of streams streamed, videos videoed
+*workers do the API call to video provider and insert video data in redis
+*fix youtu.be urls
