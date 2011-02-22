@@ -12,9 +12,9 @@
   %h2.text= @status.text
   .video
   - if @video.provider=="Vimeo"
-    .vimeo <iframe type="text/html" src="http://player.vimeo.com/video/#{@id}?autoplay=1" width="400" height="225" frameborder="0"></iframe>
+    .vimeo <iframe type="text/html" src="http://player.vimeo.com/video/#{@status.videoid}?autoplay=1" width="400" height="225" frameborder="0"></iframe>
   -else 
-    .youtube <iframe  type="text/html" width="640" height="385" src="http://www.youtube.com/embed/#{@id}?autoplay=1" frameborder="0"></iframe>
+    .youtube <iframe  type="text/html" width="640" height="385" src="http://www.youtube.com/embed/#{@status.videoid}?autoplay=1" frameborder="0"></iframe>
   .video
     .info= @video.title
     .description= @video.description

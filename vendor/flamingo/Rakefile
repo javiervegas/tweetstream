@@ -10,6 +10,8 @@ require 'redis'
 require 'resque/tasks'
 require "json"
 require 'flamingo'
+require 'tweetstream'
+require 'andand'
 
 task :redis do
 # redis-server (opens port 6379)
@@ -39,7 +41,18 @@ class HandleFlamingoEvent
 
   @redis = Redis.new
   def self.perform(type, event)
-    @redis.set type, event.to_json
-    puts event.fetch("text")
+    event["entities"]["urls"].map{ |url| (url["expanded_url"] || url["url"]) }.each do |url|
+      id = url.andand.scan(/youtube.com\/watch\?v=([-\w]+)/).first #|| @videorurl.scan(/youtu\.be\/([-\w]+)/).first || @videorurl.scan(/vimeo.com\/\D*(\d+)/).first
+      if !id.nil?
+        event["videourl"] = url
+        event["videoid"] = id
+      end
+    end
+    status = TweetStream::Status.new event
+    if !status.videoid.nil?
+      puts status.videoid
+      @redis.set type, status.to_json
+    end
   end
 end
+
