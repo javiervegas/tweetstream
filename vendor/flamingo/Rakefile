@@ -11,6 +11,7 @@ require 'resque/tasks'
 require "json"
 require 'flamingo'
 require 'tweetstream'
+require "video_info"
 require 'andand'
 
 task :redis do
@@ -46,6 +47,7 @@ class HandleFlamingoEvent
       if !id.nil?
         event["videourl"] = url
         event["videoid"] = id
+        event["video"] = VideoInfo.new(url)
       end
     end
     status = TweetStream::Status.new event
