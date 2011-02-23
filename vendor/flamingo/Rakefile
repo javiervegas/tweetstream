@@ -42,18 +42,22 @@ class HandleFlamingoEvent
 
   @redis = Redis.new
   def self.perform(type, event)
-    event["entities"]["urls"].map{ |url| (url["expanded_url"] || url["url"]) }.each do |url|
-      id = url.andand.scan(/youtube.com\/watch\?v=([-\w]+)/).first #|| @videorurl.scan(/youtu\.be\/([-\w]+)/).first || @videorurl.scan(/vimeo.com\/\D*(\d+)/).first
+    video = Hash.new
+    event["entities"]["urls"].map{ |entry| (entry["expanded_url"] || entry["url"]) }.compact.each do |url|
+      id = url.andand.scan(/youtube.com\/watch\?v=([-\w]+)/).first
       if !id.nil?
-        event["videourl"] = url
-        event["videoid"] = id
-        event["video"] = VideoInfo.new(url)
+        #puts id
+        video[:videoid] = id
+        #puts video[:videoid] 
+        video[:url] = url
       end
     end
-    status = TweetStream::Status.new event
-    if !status.videoid.nil?
-      puts status.videoid
-      @redis.set type, status.to_json
+    # id = url.andand.scan(/youtube.com\/watch\?v=([-\w]+)/).first #|| @videorurl.scan(/youtu\.be\/([-\w]+)/).first || @videorurl.scan(/vimeo.com\/\D*(\d+)/).first
+    if !video[:videoid].nil?
+      video[:info] = VideoInfo.new(video[:url])
+      event[:video] = video
+      status = TweetStream::Status.new event
+      puts @redis.set type, status.to_json
     end
   end
 end

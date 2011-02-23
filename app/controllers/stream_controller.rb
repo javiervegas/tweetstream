@@ -6,7 +6,8 @@ class StreamController < ApplicationController
     @status = TweetStream::Status.new(JSON.parse(redis.get("tweet")))
     # The status object is a special Hash with
     # method access to its keys.
-    @video = @status.video.video
+    @video = @status.video.info.video
+    @videoid = @status.video.videoid
   end
 
   def show
