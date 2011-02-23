@@ -46,18 +46,21 @@ class HandleFlamingoEvent
     event["entities"]["urls"].map{ |entry| (entry["expanded_url"] || entry["url"]) }.compact.each do |url|
       id = url.andand.scan(/youtube.com\/watch\?v=([-\w]+)/).first
       if !id.nil?
-        #puts id
         video[:videoid] = id
-        #puts video[:videoid] 
         video[:url] = url
       end
     end
     # id = url.andand.scan(/youtube.com\/watch\?v=([-\w]+)/).first #|| @videorurl.scan(/youtu\.be\/([-\w]+)/).first || @videorurl.scan(/vimeo.com\/\D*(\d+)/).first
     if !video[:videoid].nil?
-      video[:info] = VideoInfo.new(video[:url])
-      event[:video] = video
-      status = TweetStream::Status.new event
-      puts @redis.set type, status.to_json
+      begin
+        video[:info] = VideoInfo.new(video[:url])
+      rescue NoMethodError
+      end
+      if !video[:info].nil?
+        event[:video] = video
+        status = TweetStream::Status.new event
+        puts @redis.set type, status.to_json
+      end
     end
   end
 end
