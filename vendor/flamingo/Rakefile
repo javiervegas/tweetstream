@@ -54,12 +54,16 @@ class HandleFlamingoEvent
     if !video[:videoid].nil?
       begin
         video[:info] = VideoInfo.new(video[:url])
-      rescue NoMethodError
+      rescue NoMethodError #videos for which we have no permission
+      rescue OpenURI::HTTPError #videos for which the url in was mangled when on retweet
+                                #TODO: get url from retweeted_status=>entities
       end
       if !video[:info].nil?
         event[:video] = video
         status = TweetStream::Status.new event
         puts @redis.set type, status.to_json
+      else
+        puts "KO"
       end
     end
   end
