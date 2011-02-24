@@ -16,6 +16,7 @@ Tweetstream::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  resources :streams
 
   # Sample resource route with options:
   #   resources :products do
@@ -52,7 +53,7 @@ Tweetstream::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "stream#index"
+  root :to => "streams#index"
 
   # See how all your routes lay out with "rake routes"
 
