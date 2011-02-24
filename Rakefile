@@ -4,8 +4,6 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 require 'rubygems'
-require 'resque/tasks'
-require 'redis'
 require 'json'
 
 Tweetstream::Application.load_tasks

@@ -6,7 +6,7 @@
 
 require 'rake'
 require 'rubygems'
-require 'redis'
+require 'redis/namespace' 
 require 'resque/tasks'
 require "json"
 require 'flamingo'
@@ -39,8 +39,7 @@ class HandleFlamingoEvent
   # event: a hash of the json data from twitter
   #
   #def self.perform(type, event_info, event)
-
-  @redis = Redis.new
+  @redis = Redis::Namespace.new(:tweetstream,:redis => Redis.new)
   def self.perform(type, event)
     video = Hash.new
     event["entities"]["urls"].map{ |entry| (entry["expanded_url"] || entry["url"]) }.compact.each do |url|

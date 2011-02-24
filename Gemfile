@@ -31,6 +31,7 @@ gem 'andand'
 gem 'json'
 gem 'video_info'
 gem 'redis'
+gem 'redis-namespace'
 gem 'resque'
 gem 'SystemTimer'
 
