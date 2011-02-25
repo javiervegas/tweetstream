@@ -12,6 +12,10 @@ class StreamsController < ApplicationController
     @video = @status.video.info.video
     @videoid = @status.video.videoid
     redis.setnx(@status.id, redis.get("tweet"))
+    redis.zadd(session[:session_id], Time.now.to_i, @status.id)
+    redis.zrevrange(session[:session_id],0,9,"withscores").each do |k|
+      puts k
+    end
     render :template =>  "streams/show"
   end
 
