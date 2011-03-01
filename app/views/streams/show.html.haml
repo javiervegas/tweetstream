@@ -1,0 +1,25 @@
+.tweet
+  .author
+    %span.avatar <img src="#{@status.user.profile_image_url}">
+    %span.desc
+      .one
+        %span.username <a href="http://twitter.com/#{@status.user.screen_name}">#{@status.user.screen_name}</a>
+        %span.name= @status.user.name
+      .two
+        %span.ago= time_ago_in_words(@status.created_at, true)
+        %span.ago ago
+        %span.ago via Twitter
+  %h2.text= @status.text
+  .video
+  - if @video.provider=="Vimeo"
+    .vimeo <iframe type="text/html" src="http://player.vimeo.com/video/#{@videoid}?autoplay=1" width="400" height="225" frameborder="0"></iframe>
+  -else 
+    .youtube <iframe  type="text/html" width="640" height="385" src="http://www.youtube.com/embed/#{@videoid}?autoplay=1" frameborder="0"></iframe>
+  .video
+    .info= @video.title
+    .description= @video.description
+    %span.duration= convert_seconds_to_time(@video.duration)
+    %span.date= time_ago_in_words(@video.date, true)
+    %span ago via #{@video.provider}
+%h6
+  .tweet= @status.inspect
