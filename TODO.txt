@@ -1,9 +1,14 @@
-*autoload on video finish
+*queue workers call youtube api
+*fix youtu.be & vimeo urls, (do spec)
+*load new video on video finish
+*list of viewed videos
 *next button
 *left panel with comet-like scrolling tweets with video thumbnail, cickable to open in
 main panel
+*request videos by id (for favorites)
 *extend tweetstream to have get and set video url and id
 *extend video to get video.url for the frame src
 *number of streams streamed, videos videoed
 *workers do the API call to video provider and insert video data in redis
-*fix youtu.be urls
+*set up site in prod
+*set up gitosis and git origin in prod to push to

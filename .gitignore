@@ -4,3 +4,4 @@ log/*.log
 tmp/
 public/stylesheets/*.css
 Gemfile.lock
+vendor/flamingo/dump.rdb
