@@ -26,6 +26,7 @@ end
 # gem 'aws-s3', :require => 'aws/s3'
 gem 'sqlite3'
 gem 'haml'
+gem 'sass'
 gem 'tweetstream'
 gem 'andand'
 gem 'json'
